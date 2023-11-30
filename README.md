@@ -31,7 +31,7 @@ DRE Community Steering Board
 
 ## Contributions
 
-To contribute to the DestinE_ESA_DRE Software Source Code please refer to [Rule of Participation] ()
+To contribute to the DestinE_ESA_DRE Software Source Code please refer to [Rule of Participation](https://github.com/destination-earth/DestinE_ESA_DRE/blob/main/Rule_of_participation.md)
 
 ## Code of Conduct
 
