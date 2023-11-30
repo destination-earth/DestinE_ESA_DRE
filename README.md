@@ -1,4 +1,4 @@
-# DestinE_ESA_DRE
+# Destination Renewable Energy (DRE)
 
 ## Description
 
