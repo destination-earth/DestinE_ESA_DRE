@@ -14,7 +14,7 @@ Please read our guidelines (readme.md) as it help you and your organisation to b
 
 ## Rules of participation in the community
 
-In order to be part of the community, please fill in the [form](https://docs.google.com/forms/d/e/1FAIpQLSelOVOAsCNYDuVDAwZygNcnM8MgFj_uxYkliNctazlx_K-fFQ/viewform?usp=sharing) with basic information about your organisation, your interest to the DRE Use  Case and your potential contribution and send it back to the DestinE_ESA_DRE Community Steering Board.
+In order to be part of the community, please fill in the [form](https://docs.google.com/forms/d/e/1FAIpQLSelOVOAsCNYDuVDAwZygNcnM8MgFj_uxYkliNctazlx_K-fFQ/viewform?usp=sharing) with basic information about your organisation, your interest to the DRE Use  Case and your potential feedback and send it back to the DestinE_ESA_DRE Community Steering Board.
 The request will be evaluated by the DestinE_ESA_DRE Community Steering Board and an answer will be given within three weeks.
 
 ## Community
