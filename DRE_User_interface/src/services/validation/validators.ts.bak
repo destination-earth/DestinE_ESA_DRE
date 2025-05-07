@@ -1,0 +1,116 @@
+/**
+ * Centralized validation functions for form inputs
+ * These functions can be used with the ValidatedInput component
+ */
+
+/**
+ * Validates a date string
+ * @param value - Date string to validate
+ * @returns True if date is valid, false otherwise
+ */
+export const validateDate = (value: string): boolean => {
+  if (!value) return false;
+  const date = new Date(value);
+  return !isNaN(date.getTime());
+};
+
+/**
+ * Validates that end date is after or equal to start date
+ * @param startDate - Start date string
+ * @param endDate - End date string
+ * @returns True if end date is valid and after start date, false otherwise
+ */
+export const validateEndDate = (startDate: string, endDate: string): boolean => {
+  if (!validateDate(endDate)) return false;
+  if (!validateDate(startDate)) return true;
+
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  return end >= start;
+};
+
+/**
+ * Validates latitude value (-90 to 90)
+ * @param value - Latitude string to validate
+ * @returns True if latitude is valid, false otherwise
+ */
+export const validateLatitude = (value: string): boolean => {
+  if (!value) return false;
+  const num = parseFloat(value);
+  return !isNaN(num) && isFinite(num) && num >= -90 && num <= 90;
+};
+
+/**
+ * Validates longitude value (-180 to 180)
+ * @param value - Longitude string to validate
+ * @returns True if longitude is valid, false otherwise
+ */
+export const validateLongitude = (value: string): boolean => {
+  if (!value) return false;
+  const num = parseFloat(value);
+  return !isNaN(num) && isFinite(num) && num >= -180 && num <= 180;
+};
+
+/**
+ * Validates elevation value (any number)
+ * @param value - Elevation string to validate
+ * @returns True if elevation is a valid number, false otherwise
+ */
+export const validateElevation = (value: string): boolean => {
+  if (!value) return false;
+  const num = parseFloat(value);
+  return !isNaN(num) && isFinite(num);
+};
+
+/**
+ * Validates a positive number
+ * @param value - Number string to validate
+ * @returns True if value is a positive number, false otherwise
+ */
+export const validatePositiveNumber = (value: string): boolean => {
+  if (!value) return false;
+  const num = parseFloat(value);
+  return !isNaN(num) && isFinite(num) && num > 0;
+};
+
+/**
+ * Validates a number (can be positive or negative)
+ * @param value - Number string to validate
+ * @returns True if value is a number, false otherwise
+ */
+export const validateNumber = (value: string): boolean => {
+  if (!value) return false;
+  const num = parseFloat(value);
+  return !isNaN(num) && isFinite(num);
+};
+
+/**
+ * Validates azimuth value (0 to 360)
+ * @param value - Azimuth string to validate
+ * @returns True if azimuth is valid, false otherwise
+ */
+export const validateAzimuth = (value: string): boolean => {
+  if (!value) return false;
+  const num = parseFloat(value);
+  return !isNaN(num) && isFinite(num) && num >= 0 && num <= 360;
+};
+
+/**
+ * Validates tilt value (0 to 90)
+ * @param value - Tilt string to validate
+ * @returns True if tilt is valid, false otherwise
+ */
+export const validateTilt = (value: string): boolean => {
+  if (!value) return false;
+  const num = parseFloat(value);
+  return !isNaN(num) && isFinite(num) && num >= 0 && num <= 90;
+};
+
+/**
+ * Validates that a string is not empty
+ * @param value - String to validate
+ * @returns True if string is not empty, false otherwise
+ */
+export const validateRequired = (value: string): boolean => {
+  return value.trim() !== "";
+};

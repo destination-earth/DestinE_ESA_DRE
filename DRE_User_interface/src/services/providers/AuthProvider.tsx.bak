@@ -1,0 +1,218 @@
+import {
+  createContext,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
+import { InternalAxiosRequestConfig } from "axios";
+import { useSessionStorage } from "../../hooks/useSessionStorage";
+import axios from "axios";
+
+export type CustomInternalAxiosRequestConfig = InternalAxiosRequestConfig & {
+  _retry?: boolean;
+};
+
+export type AuthContextType = {
+  isAuthenticated: boolean;
+  accessToken: string | null | undefined;
+  handleUnAuthorizedError: () => void;
+  logout: () => void;
+};
+
+export const AuthContext = createContext<AuthContextType | undefined>({
+  isAuthenticated: false,
+  accessToken: undefined,
+  handleUnAuthorizedError: () => {},
+  logout: () => {},
+});
+
+interface Props {
+  children: ReactNode;
+}
+
+const AuthProvider = ({ children }: Props) => {
+  const { getItem, setItem, removeItem } = useSessionStorage("refresh_token");
+
+  const [accessToken, setAccessToken] = useState<string | null | undefined>();
+  const [refreshToken, setRefreshToken] = useState<string | null | undefined>(
+    getItem(),
+  );
+
+  const isAuthenticated = useMemo(() => {
+    const refresh_token = refreshToken;
+    return Boolean(refresh_token);
+  }, [refreshToken]);
+
+  const logout = useCallback(() => {
+    setAccessToken(null);
+    setRefreshToken(null);
+    removeItem();
+    const env = import.meta.env;
+    window.location.replace(env.VITE_LOGIN_URL);
+    //window.location.replace(env.VITE_LOGGEDOUT_URI);
+  }, [removeItem]);
+
+  const refreshAccessToken = useCallback(async () => {
+    try {
+      if (!refreshToken) {
+        console.log("Refresh token not found. Cannot refresh!");
+        return;
+      }
+
+      const env = import.meta.env;
+      const axiosClient = axios.create({
+        baseURL: env.VITE_BASE_URL,
+        timeout: 10000,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const settings = {
+        url: "api/token/refreshtoken",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: {
+          token:accessToken,
+          refreshToken: refreshToken,
+          url:env.CLOACK_REDIRECT_URI
+          //url: `${env.BASE_URL}/${env.VITE_REDIRECT_URI}`,
+        },
+      };
+
+      const response = await axiosClient(settings);
+
+      const { access_token } = response.data ?? {};
+
+      if (!access_token) {
+        console.log("Access token is missing from the response!");
+        return;
+      }
+
+      setAccessToken(access_token);
+      return access_token;
+    } catch (error) {
+      console.error("Failed to refresh access token", error);
+      logout();
+    }
+  }, [logout, refreshToken]);
+
+  
+  
+  
+  
+  const requestAccessToken = useCallback(
+    async (code: string) => {
+      try {
+        const env = import.meta.env;
+        const axiosClient = axios.create({
+          baseURL: env.VITE_BASE_URL,
+          timeout: 10000,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        const settings = {
+          url: "api/token/getToken",
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          data: {
+            url:env.CLOACK_REDIRECT_URI,
+            code: code,
+          },
+        };
+
+        const response = await axiosClient(settings);
+
+        const { access_token, refresh_token } = response.data ?? {};
+
+        if (!access_token || !refresh_token) {
+          console.log(
+            "Access token or Refresh token is missing from the response!",
+          );
+          return;
+        }
+
+        console.log(response);
+
+        setAccessToken(access_token);
+        setRefreshToken(refresh_token);
+        setItem(refresh_token);
+      } catch (error) {
+        console.error("Failed to fetch access token", error);
+        throw error;
+      }
+    },
+    [setItem],
+  );
+
+
+  const handleUnAuthorizedError = useCallback(
+    () => refreshAccessToken(),
+    [refreshAccessToken],
+  );
+
+  useEffect(() => {
+    const initializeAuth = async () => {
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get("code");
+ 
+      if (code==null)
+      {
+        console.log("No code is given,logout.");
+        logout();
+      }
+
+
+        const refresh_token = getItem();
+
+      if (refresh_token) {
+        try {
+          await refreshAccessToken();
+        } catch (error) {
+          console.log("Refresh token failed");
+          logout();
+        }
+        return;
+      }
+
+      if (code) {
+        try {
+          console.log("Get tokens...");
+          await requestAccessToken(code);
+        } catch (error) {
+          console.log("Getting access token failed, logging out...");
+          logout();
+        }
+        return;
+      }
+
+      console.log("Not refresh token or code found, redirect to login..");
+      logout();
+    };
+
+    initializeAuth();
+  }, [getItem, logout, refreshAccessToken, refreshToken, requestAccessToken]);
+
+  return (
+    <AuthContext.Provider
+      value={{
+        isAuthenticated,
+        accessToken,
+        handleUnAuthorizedError,
+        logout,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+export default AuthProvider;

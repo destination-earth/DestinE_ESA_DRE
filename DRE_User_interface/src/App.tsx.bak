@@ -1,0 +1,45 @@
+import { RouterProvider } from "@tanstack/react-router";
+import AuthProvider from "./services/providers/AuthProvider";
+import { router } from "./router";
+import { Suspense  } from "react";
+import { useAuth } from "./hooks/useAuth";
+import ApiProvider from "./services/providers/ApiProvider";
+//import { useInitializeAssessment } from "./hooks/query";
+
+function PrivateApp() {
+  const { isAuthenticated, accessToken, handleUnAuthorizedError } = useAuth();
+  
+  // Initialize assessment data when the app loads
+  // const { data: initData, isError, error } = useInitializeAssessment();
+  
+  // useEffect(() => {
+  //   if (initData) {
+  //     console.log("Assessment initialized:", initData);
+  //   }
+    
+  //   if (isError) {
+  //     console.error("Failed to initialize assessment:", error);
+  //   }
+  // }, [initData, isError, error]);
+  
+  return (
+    <ApiProvider
+      accessToken={accessToken}
+      onUnauthorisedError={handleUnAuthorizedError}
+    >
+      <RouterProvider router={router} context={{ isAuthenticated }} />
+    </ApiProvider>
+  );
+}
+
+function App() {
+  return (
+    <Suspense fallback={<div>Loading..</div>}>
+      <AuthProvider>
+        <PrivateApp />
+      </AuthProvider>
+    </Suspense>
+  );
+}
+
+export default App;
