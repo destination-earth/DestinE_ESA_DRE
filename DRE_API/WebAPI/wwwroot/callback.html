@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logging In Process</title>
+    <link rel="stylesheet" href="https://iam.ivv.desp.space/resources/vm63k/login/desp/css/login.css" />
+    <link rel="stylesheet" href="https://iam.ivv.desp.space/resources/vm63k/login/desp/css/styles.css" />
+    <style>
+        /* Basic reset and body styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        /* Card styling */
+        .card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+            .card h2 {
+                margin-top: 0;
+            }
+
+        /* Ensure the button takes the full width of the container */
+        #kc-login {
+            width: 100%;
+        }
+
+        /* Login link styling (if needed) */
+        .login-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007BFF;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+            .login-link:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+
+
+
+    <script>
+        // Get the URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // Create a function to display parameters
+        function displayParameters() {
+            const parametersDiv = document.getElementById("parameters");
+
+            // Clear existing content
+            parametersDiv.innerHTML = "";
+
+            // Iterate over all parameters and display them
+            urlParams.forEach((value, key) => {
+                const parameterElement = document.createElement("div");
+                parameterElement.textContent = `${key}: ${value}`;
+                parametersDiv.appendChild(parameterElement);
+            });
+        }
+
+      
+        setTimeout(() => {
+            redirectToCustomAddress();
+        }, 5000);
+
+
+
+        function redirectToCustomAddress() {
+            // Get the current URL
+            const currentUrl = new URL(window.location.href);
+
+            // Extract query parameters
+            const queryParams = currentUrl.search;
+
+            // Get the redirect address from the text box
+            const redirectAddress = "http://localhost:5000/login";
+
+            // Construct the new URL
+            const newUrl = `${redirectAddress}${queryParams}`;
+
+            // Redirect to the new URL
+            window.location.href = newUrl;
+        }
+
+    </script>
+
+
+  
+    <div style="hidden;" id="parameters"></div>
+
+    <div class="card">
+        <h2>HYREF Application</h2>
+        <p>Retrived Authorization from KeyCloak</p>
+        <p>Redirecting to HYREF Application</p>
+
+
+
+    </div>
+
+
+  
+
+</body>
+
+
+
+</html>

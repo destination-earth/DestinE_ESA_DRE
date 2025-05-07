@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Energy Forecast</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+ 
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .description {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .bold-text {
+            font-weight: bold;
+            color: #333;
+        }
+
+
+
+
+        /* Top section: text and first image side by side */
+        .top-section {
+            display: flex; /* Lay out items in a row */
+            align-items: center; /* Vertically center them */
+            margin-bottom: 20px; /* Spacing below this row */
+        }
+
+            .top-section .text {
+                margin-right: 20px; /* Spacing between text and image */
+            }
+
+        /* Bottom section: two images stacked vertically */
+        .bottom-section img {
+            display: block; /* Each image will be on its own line */
+            margin: 10px 0; /* Spacing between images */
+        }
+
+
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-bottom: none;
+            background-color: #f4f4f4;
+            margin-right: 5px;
+        }
+
+            .tab.active {
+                background-color: #fff;
+            }
+
+        .content {
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+            .content-section.active {
+                display: block;
+            }
+
+        .chart {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+            .chart img {
+                width: 100%;
+                height: auto;
+            }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+            .toggle-switch input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+
+            .slider:before {
+                position: absolute;
+                content: "";
+                height: 26px;
+                width: 26px;
+                left: 4px;
+                bottom: 4px;
+                background-color: white;
+                transition: 0.4s;
+                border-radius: 50%;
+            }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+            input:checked + .slider:before {
+                transform: translateX(26px);
+            }
+
+        .form-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+            .form-container.active {
+                display: block;
+            }
+
+        .hidden {
+            display: none;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+            .form-grid div {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .form-grid input, .form-grid select {
+                padding: 10px;
+                margin-top: 5px;
+            }
+
+            .form-grid button {
+                grid-column: span 2;
+                padding: 10px;
+                margin-top: 10px;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <div class="tab active" onclick="showTab('about')">About</div>
+            <div class="tab" onclick="showTab('one-off')">One-off (B2)</div>
+            <div class="tab" onclick="showTab('annual')">Annual Forecasting Service (C)</div>
+        </div>
+        <div class="content">
+            <div id="about" class="content-section active">
+                <h1>About</h1>
+                <p>Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story.</p>
+
+                <div class="top-section">
+
+
+
+                    <img src="ass-panels.png" alt="First Image"  style="width: 50%;">
+                    <div class="">
+                        <div class="title">Use Case Demonstration (A2)</div>
+                        <p class="">
+                            Explore how ΚΥΝΗΓΟΣ ΑΕ, a subsidiary of Quest Energy AE, utilizes our solar forecasting service
+                            to optimize the performance of its stations in Greece. This demonstration showcases our
+                            <span class="bold-text">Solar Forecasting</span> service can enhance decision-making and efficiency
+                            for large-scale solar parks.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Bottom section with two images stacked vertically -->
+
+            <div class="bottom-section">
+                <img src="for-first.png" alt="Second Image" style="width: 70%;">
+                <img src="for-sec.png" alt="Third Image" style="width: 70%;">
+            </div>
+
+        </div>
+
+           
+            <div id="one-off" class="content-section">
+                <h1>One-off (B2)</h1>
+                <p>To generate accurate 2-day solar energy production forecasts, we invite you to upload your solar park data using our CSV template. This data allows our system to train a tailored prediction model based on your specific site conditions. Download the template below to get started!</p>
+
+                <!-- Toggle Switch -->
+                <div class="toggle-switch">
+                    <input type="checkbox" id="toggle" onchange="toggleForm()">
+                    <label for="toggle" class="slider"></label>
+                </div>
+
+                <!--<div class="chart">
+                    <h2>Forecasted Power Production (kW) vs. Time</h2>
+                    <img src="chart-placeholder.png" alt="Forecasted Power Production Chart">
+                </div>-->
+
+                <!-- Forms to hide when toggle is active -->
+                <div id="basic-forms">
+                    <div>
+                        <h2>Upload your own data</h2>
+                        <p>Download the template below to get started!</p>
+                        <button>DOWNLOAD TEMPLATE</button>
+                    </div>
+
+                    <div class="form-grid">
+                        <div>
+                            <h2>Latitude</h2>
+                            <input type="text" placeholder="Enter latitude">
+                        </div>
+                        <div>
+                            <h2>Longitude</h2>
+                            <input type="text" placeholder="Enter longitude">
+                        </div>
+                        <div>
+                            <h2>Altitude</h2>
+                            <input type="text" placeholder="Enter altitude">
+                        </div>
+                        <div>
+                            <button>UPLOAD TEMPLATE</button>
+                            <button>CLEAR</button>
+                            <button onclick="showImagesAndHideForms()">ORDER</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Container -->
+                <div id="form-container" class="form-container">
+                    <h2>PARK SPECIFICATIONS</h2>
+                    <p>Please provide key details about your solar park: its precise location (latitude, longitude, altitude), panel tilt and azimuth angles, and whether your system includes tracking (fixed, single-axis, or dual-axis tracking). Additionally, specify your DC capacity (in watts) to ensure accurate modeling. With these inputs, our Digital Twin system refines solar energy predictions, helping you maximize efficiency and performance.</p>
+
+                    <div class="form-grid">
+                        <div>
+                            <h3>Latitude</h3>
+                            <input type="text" placeholder="Enter latitude">
+                        </div>
+                        <div>
+                            <h3>Longitude</h3>
+                            <input type="text" placeholder="Enter longitude">
+                        </div>
+                        <div>
+                            <h3>Altitude</h3>
+                            <input type="text" placeholder="Enter altitude">
+                        </div>
+                        <div>
+                            <h3>Tilt</h3>
+                            <input type="text" placeholder="Enter tilt">
+                        </div>
+                        <div>
+                            <h3>Azimuth</h3>
+                            <input type="text" placeholder="Enter azimuth">
+                        </div>
+                        <div>
+                            <h3>Tracking</h3>
+                            <select>
+                                <option value="fixed">Fixed</option>
+                                <option value="single-axis">Single-axis</option>
+                                <option value="dual-axis">Dual-axis</option>
+                            </select>
+                        </div>
+                        <div>
+                            <h3>Capacity</h3>
+                            <input type="text" placeholder="Enter capacity">
+                        </div>
+                        <div>
+                            <button>CLEAR</button>
+                            <button>SEND</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="annual" class="content-section">
+                <h1>Annual Forecasting Service (C)</h1>
+                <p>To generate accurate 2-day solar energy production forecasts, we invite you to upload your solar park data using our CSV template. This data allows our system to train a tailored prediction model based on your specific site conditions. Download the template below to get started!</p>
+
+                <!-- Toggle Switch -->
+                <div class="toggle-switch">
+                    <input type="checkbox" id="toggle-annual" onchange="toggleFormAnnual()">
+                    <label for="toggle-annual" class="slider"></label>
+                </div>
+
+                <!--<div class="chart">
+                    <h2>Forecasted Power Production (kW) vs. Time</h2>
+                    <img src="chart-placeholder.png" alt="Forecasted Power Production Chart">
+                </div>-->
+
+                <!-- Forms to hide when toggle is active -->
+                <div id="basic-forms-annual">
+                    <div>
+                        <h2>Upload your own data</h2>
+                        <p>Download the template below to get started!</p>
+
+                        <button>DOWNLOAD TEMPLATE</button>
+                    </div>
+
+                    <div style="border: 1px solid #ccc; border-radius: 5px;   padding: 15px; max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5;">
+                        <p style="margin: 0;">
+                            <strong style="color: #555;">The model will be trained once based on your input.</strong>
+                            In case you decide you want a different parameterization you'll have to buy a new annual subscription,
+                            so put some serious work into preparing the template and giving the correct parameters.
+                        </p>
+                    </div>
+
+
+                    <div class="form-grid">
+                        <div>
+                            <h2>Latitude</h2>
+                            <input type="text" placeholder="Enter latitude">
+                        </div>
+                        <div>
+                            <h2>Longitude</h2>
+                            <input type="text" placeholder="Enter longitude">
+                        </div>
+                        <div>
+                            <h2>Altitude</h2>
+                            <input type="text" placeholder="Enter altitude">
+                        </div>
+                        <div>
+                            <button>UPLOAD TEMPLATE</button>
+                            <button>CLEAR</button>
+                            <button onclick="showImagesAndHideForms()">ORDER</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="order-images" class="hidden">
+                    <h2>Generated Forecasts</h2>
+                    <img id="image1" src="image1-placeholder.png" alt="Forecast Image 1">
+                    <img id="image2" src="image2-placeholder.png" alt="Forecast Image 2">
+                </div>
+
+                <!-- Form Container -->
+                <div id="form-container-annual" class="form-container">
+                    <h2>PARK SPECIFICATIONS</h2>
+                    <p>Please provide key details about your solar park: its precise location (latitude, longitude, altitude), panel tilt and azimuth angles, and whether your system includes tracking (fixed, single-axis, or dual-axis tracking). Additionally, specify your DC capacity (in watts) to ensure accurate modeling. With these inputs, our Digital Twin system refines solar energy predictions, helping you maximize efficiency and performance.</p>
+
+                    <div class="form-grid">
+                        <div>
+                            <h3>Latitude</h3>
+                            <input type="text" placeholder="Enter latitude">
+                        </div>
+                        <div>
+                            <h3>Longitude</h3>
+                            <input type="text" placeholder="Enter longitude">
+                        </div>
+                        <div>
+                            <h3>Altitude</h3>
+                            <input type="text" placeholder="Enter altitude">
+                        </div>
+                        <div>
+                            <h3>Tilt</h3>
+                            <input type="text" placeholder="Enter tilt">
+                        </div>
+                        <div>
+                            <h3>Azimuth</h3>
+                            <input type="text" placeholder="Enter azimuth">
+                        </div>
+                        <div>
+                            <h3>Tracking</h3>
+                            <select>
+                                <option value="fixed">Fixed</option>
+                                <option value="single-axis">Single-axis</option>
+                                <option value="dual-axis">Dual-axis</option>
+                            </select>
+                        </div>
+                        <div>
+                            <h3>Capacity</h3>
+                            <input type="text" placeholder="Enter capacity">
+                        </div>
+                        <div>
+                            <button>CLEAR</button>
+                            <button>SEND</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all content sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Show the selected content section
+            document.getElementById(tabName).classList.add('active');
+            // Update tab styles
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`.tab[onclick="showTab('${tabName}')"]`).classList.add('active');
+        }
+
+        function toggleForm() {
+            const formContainer = document.getElementById('form-container');
+            const basicForms = document.getElementById('basic-forms');
+            const toggle = document.getElementById('toggle');
+            if (toggle.checked) {
+                formContainer.classList.add('active');
+                basicForms.classList.add('hidden'); // Hide the basic forms
+            } else {
+                formContainer.classList.remove('active');
+                basicForms.classList.remove('hidden'); // Show the basic forms
+            }
+        }
+
+        function toggleFormAnnual() {
+            const formContainer = document.getElementById('form-container-annual');
+            const basicForms = document.getElementById('basic-forms-annual');
+            const toggle = document.getElementById('toggle-annual');
+            if (toggle.checked) {
+                formContainer.classList.add('active');
+                basicForms.classList.add('hidden'); // Hide the basic forms
+            } else {
+                formContainer.classList.remove('active');
+                basicForms.classList.remove('hidden'); // Show the basic forms
+            }
+        }
+
+        function showImagesAndHideForms() {
+            // Show the imagesForecasted Power Production (kW) vs. Time
+            const imagesDiv = document.getElementById('order-images');
+            imagesDiv.classList.remove('hidden'); // Make images visible
+
+            // Hide the forms
+            const basicForms = document.getElementById('basic-forms');
+            const basicFormsAnnual = document.getElementById('basic-forms-annual');
+            const formContainer = document.getElementById('form-container');
+            const formContainerAnnual = document.getElementById('form-container-annual');
+
+            if (basicForms) basicForms.classList.add('hidden');
+            if (basicFormsAnnual) basicFormsAnnual.classList.add('hidden');
+            if (formContainer) formContainer.classList.add('hidden');
+            if (formContainerAnnual) formContainerAnnual.classList.add('hidden');
+        }
+    </script>
+</body>
+</html>

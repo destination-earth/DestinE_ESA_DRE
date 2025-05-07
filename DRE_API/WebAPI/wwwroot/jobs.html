@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Jobs Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-4xl mx-auto bg-white p-6 shadow-lg rounded-lg">
+        <div class="flex justify-between items-center mb-4 relative">
+            <h1 class="text-2xl font-bold">My Jobs</h1>
+            <div class="relative">
+                <button onclick="toggleNotifications()" class="relative">
+                    <!-- Notification icon and badge can be added here -->
+                </button>
+                <div id="notification-panel" class="absolute right-0 mt-2 w-64 bg-white border rounded-lg shadow-lg hidden">
+                    <div id="notification-list" class="p-2 text-sm text-gray-700">No notifications</div>
+                </div>
+            </div>
+        </div>
+        <table class="min-w-full bg-white border rounded-lg">
+            <thead>
+                <tr class="border-b">
+                    <th class="p-3 text-left font-bold">Date</th>
+                    <th class="p-3 text-left font-bold">Energy Source</th>
+                    <th class="p-3 text-left font-bold">Job Name</th>
+                    <th class="p-3 text-left font-bold">Status</th>
+                    <th class="p-3 text-left font-bold">Action</th>
+                    <th class="p-3 text-left font-bold">Download URL</th>
+                </tr>
+            </thead>
+            <tbody id="jobs-list">
+                <!-- Jobs will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        let plans = [
+            { name: "Annual", color: "bg-blue-100" }, // Light blue for Annual
+            { name: "Assessment", color: "bg-purple-100" }, // Light green for One-off
+            { name: "Free", color: "bg-yellow-100" }, // Light yellow for Free
+            { name: "One-off", color: "bg-green-100" } // Light green for One-off
+        ];
+
+        let jobs = [
+            { id: 1, date: "2025-02-01", energySource: "Solar", name: "Assessment", status: "Running", downloadURL: "#" },
+            { id: 2, date: "2025-02-02", energySource: "Wind", name: "Annual", status: "Failed", downloadURL: "" },
+            { id: 3, date: "2025-02-03", energySource: "Solar", name: "Free", status: "Completed", downloadURL: "No" },
+            { id: 4, date: "2025-02-03", energySource: "Solar", name: "One-off", status: "Cancelled", downloadURL: "No" }
+        ];
+        let notifications = [];
+
+        function renderJobs() {
+            const jobsList = document.getElementById("jobs-list");
+            jobsList.innerHTML = "";
+            let hasFailedJobs = false;
+            notifications = [];
+
+            jobs.forEach(job => {
+                const plan = plans.find(p => p.name === job.name);
+                const planColor = plan ? plan.color : "";
+
+                const jobRow = document.createElement("tr");
+                jobRow.classList = "border-b";
+                jobRow.innerHTML = `
+                    <td class="p-3">${job.date}</td>
+                    <td class="p-3">${job.energySource}</td>
+                    <td class="p-3 ${planColor}">${job.name}</td>
+                    <td class="p-3 ${job.status === 'Failed' || job.status === 'Cancelled' ? 'text-red-500' : 'text-green-600'}">${job.status}</td>
+                    <td class="p-3">
+                        <button onclick="cancelJob(${job.id})" class="bg-red-500 text-white px-3 py-1 rounded ${job.status !== 'Running' ? 'opacity-50 cursor-not-allowed' : ''}" ${job.status !== 'Running' ? 'disabled' : ''}>
+                            Cancel
+                        </button>
+                    </td>
+                    <td class="p-3">
+                        <a href="${job.downloadURL}" class="text-blue-500 hover:text-blue-700">Download</a>
+                    </td>
+                `;
+                jobsList.appendChild(jobRow);
+
+                if (job.status === "Failed") {
+                    notifyUser(`Job '${job.name}' has failed!`);
+                    hasFailedJobs = true;
+                    notifications.push(`Job '${job.name}' has failed.`);
+                }
+            });
+            updateNotificationList();
+            document.getElementById("notification-badge").classList.toggle("hidden", !hasFailedJobs);
+        }
+
+        function cancelJob(jobId) {
+            const job = jobs.find(j => j.id === jobId);
+            if (job && job.status === "Running") {
+                job.status = "Cancelled";
+                notifications.push(`Job '${job.name}' has been cancelled.`);
+                renderJobs();
+            }
+        }
+
+        function notifyUser(message) {
+            if (Notification.permission === "granted") {
+                new Notification("Job Alert", { body: message });
+            } else if (Notification.permission !== "denied") {
+                Notification.requestPermission().then(permission => {
+                    if (permission === "granted") {
+                        new Notification("Job Alert", { body: message });
+                    }
+                });
+            }
+        }
+
+        function updateNotificationList() {
+            const list = document.getElementById("notification-list");
+            list.innerHTML = notifications.length ? notifications.map(n => `<div class='p-2 border-b'>${n}</div>`).join('') : "No notifications";
+        }
+
+        function toggleNotifications() {
+            const panel = document.getElementById("notification-panel");
+            updateNotificationList();
+            panel.classList.toggle("hidden");
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            renderJobs();
+        });
+    </script>
+</body>
+</html>

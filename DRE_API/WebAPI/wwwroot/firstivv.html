@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HYREF Login</title>
+
+    <style>
+
+
+        body {
+            background-color: #08020a;
+            background-image: url('https://platform.destine.eu/wp-content/uploads/2024/03/home-bkg.jpg'); /* Replace with your image URL */
+            background-repeat: no-repeat; /* Optional: Controls how the image repeats */
+            background-position: unset; /*  Optional: Controls the position of the image */
+            background-size: cover; /*Optional: Controls how the image fills the container 
+            background: linear-gradient(to top, #c471f5 0%, #000 100%);*/
+        }
+
+        .centered-link {
+            display: inline-block; /* Allow styling like a button */
+            text-decoration: none; /* Remove underline from link */
+            color: white;
+            
+            padding: 10px 20px; /* Add padding for better appearance */
+            border-radius: 5px; /* Optional: Add rounded corners */
+            /* Apply centering from absolute positioning method */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .centered-element {
+            position: absolute;
+            bottom: 0; /* Position at the bottom edge */
+            display: inline-block; /* Allow styling like a button */
+            text-decoration: none; /* Remove underline from link */
+            color: white;
+            background-color: #2c1136; /* Optional: Add background color for contrast */
+            padding: 10px 20px; /* Add padding for better appearance */
+            border-radius: 5px; /* Optional: Add rounded corners */
+            /* Apply centering from absolute positioning method */
+            
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="centered-link">
+        <img decoding="async" width="460" height="45" src="https://platform.destine.eu/wp-content/uploads/2024/03/DE-EC-01.svg" alt="">
+
+     </div>
+    <div class="centered-link">
+ 
+        <div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <h1>TEST HYREF WEB APP</h1>
+
+        </div>
+    </div>
+
+
+
+
+    <div>
+        <a class="centered-element" href="javascript:loginWithKeycloak()">CLICK HERE TO LOGIN TO DRE HYREF WEB APP</a>
+    </div>
+
+    <script>
+        function loginWithKeycloak() {
+            // Redirect the user to the Keycloak login page
+            window.location.href = 'https://iam.ivv.desp.space/realms/desp/protocol/openid-connect/auth' +
+                '?client_id=hyref-bearer' +
+                '&response_type=code' +
+                '&redirect_uri=http://84.254.34.124/callback.html';
+        }
+    </script>
+</body>
+</html>
+
+
+ 

@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Accordion</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f9f9f9;
+        }
+
+        .accordion {
+            width: 600px;
+        }
+
+        .accordion-item {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+
+            .accordion-item.active {
+                border: 2px solid blue;
+            }
+
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+            .accordion-header .icon {
+                width: 30px;
+                height: 30px;
+                background: blue;
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                font-size: 20px;
+            }
+
+        .accordion-content {
+            display: none;
+            padding: 0 20px 20px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="accordion">
+        <div class="accordion-item active">
+            <div class="accordion-header">
+                What is the source of the solar radiation data?
+                <div class="icon">▼</div>
+            </div>
+            <div class="accordion-content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">
+                How is my data used?
+                <div class="icon">▶</div>
+            </div>
+            <div class="accordion-content">
+                Content hidden.
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">
+                What is the accuracy of the Power Production estimates?
+                <div class="icon">▶</div>
+            </div>
+            <div class="accordion-content">
+                Content hidden.
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">
+                How can one order a customized version of the service?
+                <div class="icon">▶</div>
+            </div>
+            <div class="accordion-content">
+                Content hidden.
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('.accordion-header').click(function() {
+                let parent = $(this).parent();
+                let content = parent.find('.accordion-content');
+                let icon = $(this).find('.icon');
+
+                if (parent.hasClass('active')) {
+                    content.slideUp();
+                    parent.removeClass('active');
+                    icon.text('▶');
+                } else {
+                    $('.accordion-content').slideUp();
+                    $('.accordion-item').removeClass('active');
+                    $('.accordion-header .icon').text('▶');
+                    content.slideDown();
+                    parent.addClass('active');
+                    icon.text('▼');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

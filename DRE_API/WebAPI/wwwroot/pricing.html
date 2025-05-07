@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .tab-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+            .tab.active {
+                border-bottom: 2px solid #6200ee;
+                color: #6200ee;
+            }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+            .pricing-table td {
+                padding: 15px;
+                border-bottom: 1px solid #eee;
+            }
+
+        .plan-header {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .plan-price {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .plan-type {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .choose-button {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .feature-check {
+            color: #1a1a1a;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tab-container">
+        <div class="tabs">
+            <button class="tab active">Assessment</button>
+            <button class="tab">Forecast</button>
+        </div>
+
+        <!-- Assessment Tab -->
+        <div class="tab-content" id="assessment">
+            <table class="pricing-table">
+                <tr>
+                    <td>Compare plans</td>
+                    <td>
+                        <div class="plan-price">Basic</div>
+                       
+                        <button class="choose-button">Choose This Plan</button>
+                    </td>
+                    <td>
+                        <div class="plan-price">Premium</div>
+       
+                        <button class="choose-button">Choose This Plan</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Calculate GHI, DNI monthly means</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Download data</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Estimate Power Production</td>
+                    <td></td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Email Support</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>24/7 customer support</td>
+                    <td></td>
+                    <td>✓</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Forecast Tab -->
+        <div class="tab-content" id="forecast" style="display: none;">
+            <table class="pricing-table">
+                <tr>
+                    <td>Compare plans</td>
+                    <td>
+                        <div class="plan-price">Free</div>
+                        <button class="choose-button">Choose This Plan</button>
+                    </td>
+                    <td>
+                        <div class="plan-price">One-Off</div>
+              
+                        <button class="choose-button">Choose This Plan</button>
+                    </td>
+                    <td>
+                        <div class="plan-price">Annual subscription</div>
+                       
+                        <button class="choose-button">Choose This Plan</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2-day Energy Forecast</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>2-day Power Production Forecast</td>
+                    <td></td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Email Support</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>24/7 customer support</td>
+                    <td></td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Forecasts archive</td>
+                    <td></td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const tabs = document.querySelectorAll('.tab');
+        const contents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                contents.forEach(content => content.style.display = 'none');
+                contents[index].style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
