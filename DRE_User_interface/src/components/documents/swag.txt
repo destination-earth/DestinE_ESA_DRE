@@ -1,0 +1,23 @@
+solar one-off standard:
+/api/Forecast/solar_basic
+
+solar one-off training:
+/api/Forecast/solar_basic_file
+
+solar annual standard:
+/api/Forecast/solar_premium
+
+solar annual training:
+/api/Forecast/solar_premium_file
+
+wind one-off standard:
+/api/Forecast/wind_basic
+
+wind one-off training:
+/api/Forecast/wind_basic_file
+
+wind annual standard:
+/api/Forecast/wind_premium
+
+wind annual training:
+/api/Forecast/wind_premium_file

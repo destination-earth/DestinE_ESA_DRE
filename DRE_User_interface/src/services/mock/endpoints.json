@@ -1,0 +1,179 @@
+Solar one-off
+
+/api/Forecast/solar_basic
+Request
+{
+  "latitude": 0,
+  "longitude": 0,
+  "elevation": 0,
+  "tilt": 0,
+  "azimuth": 0,
+  "tracking": 0,
+  "capacity": 0
+}
+Response
+{
+  "jobid": "myGuid",
+  "message": "success",
+  "status": 0
+}
+
+Solar one-off with file
+
+/api/Forecast/solar_basic_file
+Request
+{
+  "ContentType": "string",
+  "ContentDisposition": "string",
+  "Headers": [
+    "string"
+  ],
+  "Length": 0,
+  "Name": "string",
+  "FileName": "string",
+  "latitude": 0,
+  "longitude": 0,
+  "elevation": 0
+}
+Respone
+{
+  "jobid": "myGuid",
+  "message": "success",
+  "status": 0
+}
+
+Solar annual
+
+/api/Forecast/solar_premium
+Request
+{
+  "latitude": 0,
+  "longitude": 0,
+  "elevation": 0,
+  "tilt": 0,
+  "azimuth": 0,
+  "tracking": 0,
+  "capacity": 0
+}
+Respone
+{
+  "jobid": "myGuid",
+  "message": "success",
+  "status": 0
+}
+
+
+Solar annual with file
+
+/api/Forecast/solar_premium_file
+Request
+{
+  "ContentType": "string",
+  "ContentDisposition": "string",
+  "Headers": [
+    "string"
+  ],
+  "Length": 0,
+  "Name": "string",
+  "FileName": "string",
+  "latitude": 0,
+  "longitude": 0,
+  "elevation": 0
+}
+Respone
+{
+  "jobid": "myGuid",
+  "message": "success",
+  "status": 0
+}
+
+Wind one-off
+
+/api/Forecast/wind_basic
+Request
+{
+  "latitude": 0,
+  "longitude": 0,
+  "hubheight": 0,
+  "powerCurveModel": "string",
+  "capacity": 0
+}
+Respone
+{
+  "latitude": 0,
+  "longitude": 0,
+  "hubheight": 0,
+  "powerCurveModel": "string",
+  "capacity": 0
+}
+
+Wind one-off with file
+
+/api/Forecast/wind_basic_file
+Request
+{
+  "ContentType": "string",
+  "ContentDisposition": "string",
+  "Headers": [
+    "string"
+  ],
+  "Length": 0,
+  "Name": "string",
+  "FileName": "string",
+  "powerCurveModel": "string",
+  "capacity": 0,
+  "latitude": 0,
+  "longitude": 0,
+  "hubHeight": 0
+}
+Respone
+{
+  "jobid": "myGuid",
+  "message": "success",
+  "status": 0
+}
+
+
+Wind annual
+
+/api/Forecast/wind_premium
+Request
+{
+  "latitude": 0,
+  "longitude": 0,
+  "hubheight": 0,
+  "powerCurveModel": "string",
+  "capacity": 0
+}
+Respone
+{
+  "jobid": "myGuid",
+  "message": "success",
+  "status": 0
+}
+
+Wind annual with file
+
+/api/Forecast/wind_premium_file
+Request
+{
+  "ContentType": "string",
+  "ContentDisposition": "string",
+  "Headers": [
+    "string"
+  ],
+  "Length": 0,
+  "Name": "string",
+  "FileName": "string",
+  "powerCurveModel": "string",
+  "capacity": 0,
+  "latitude": 0,
+  "longitude": 0,
+  "hubHeight": 0
+}
+Respone
+{
+  "jobid": "myGuid",
+  "message": "success",
+  "status": 0
+}
