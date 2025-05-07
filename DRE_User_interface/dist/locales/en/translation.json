@@ -1,0 +1,108 @@
+{
+    "login": "Login",
+    "email": "Email",
+    "password": "Password",
+    "plant": {
+        "label": "Plant",
+        "predictionDates":"Forcasting dates"
+    },
+    "dataItem": {
+        "ambientTemperature": "Temperature (°C)",
+        "datetime": "Timestamp",
+        "ghiwhm2": "Solar Irradiance (W/m²)",
+        "powerKw": "Power (kW)",
+        "directionDeg": "Wind Direction (degrees)",
+        "powerKwWind": "Wind Power (kW)",
+        "powerKwSolar": "Solar Power (kW)",
+        "powerKwTotal": "Total Power (kW)",
+        "speedMs":"Wind Speed (m/s)"
+    },
+    "dashboard": {
+        "hyrefModelPrediction": "Forecasted Power Output (kW) VS Time",
+        "energyProductionSummary": "Energy Output Details",
+        "powerOutput": "Actual Power Output (kW)",
+        "plantProductionParameters": "Actual Meteorogical data",
+        "productionVSPrediction":"Actual Power Output (kW) VS Forecasted Power Output (kW)",
+        "keyPerformanceIndicators": "Performance indicators for",
+        "availability": "Availability",
+        "performance": "Performance",
+        "efficiency": "Efficiency",
+        "keyPerformance": {
+            "1": "Availability",
+            "2": "Performance",
+            "3": "Efficiency",
+            "1details": "Based on num of wind turbines on operation, data availability in the specified time",
+            "2details": "Based on the rated power",
+            "3details": "Based on the empirical power curve"
+        }
+    },
+    "enum": {
+        "plantType": {
+            "10": "Solar",
+            "20": "Wind",
+            "30": "Hybrid"
+        }
+    },
+    "menu": {
+        "dashboard": "Overview",
+        "wind": "Wind",
+        "solar": "Solar",
+        "hybrid": "Hybrid",
+        "retrieval":"Data Retrieval"
+    },
+    "jobs": {
+        "datetime": "Date",
+        "energySource": "Energy source",
+        "plan": "Plan",
+        "progress": "Progress",
+        "parameters": "Parameters",       
+        "downloadUrl":"Download URL",
+        "archive":"Archive"
+    },
+    "kW":"kW",
+    "assessment": {
+        "about": "About",
+        "basica1":"Basic (A1)",
+        "premiumb1":"Premium (B1)",
+        "solar": {
+            "about_box": {
+                "boxa_title": "Solar Radiation & Power Production Assessment (A1, B1)",
+                "boxa_text":"Our service provides two levels of solar data insights:Basic Assessment – Visualize and download monthly average values of Global Horizontal Irradiance (GHI) and Direct Normal Irradiance (DNI) for any user-defined location and date range. This tool helps users analyze solar resource availability with no cost.Premium Assessment – In addition to solar radiation data, this service offers power production estimation based on your solar park’s specifications, including panel tilt, azimuth, tracking type (fixed, single-axis, or dual-axis), and capacity.Data Source: CAMS Solar Radiation Data Service.",
+                "boxb_title": "Use Case Demostration (A3)",
+                "boxb_text":"Explore how KYNIGOS AE"
+            },
+            "basic_box": {
+                "boxa_title": "Retrieve Monthly Mean Solar Radiation Data (A1)",
+                "boxa_text": "Get accurate monthly mean values of Global Horizontal Irradiance (GHI) and Direct Normal Irradiance (DNI) for your location. Simply enter your latitude and longitude, along with the start and end dates, to generate a detailed visualization of solar radiation trends. You can also download the data in CSV format for further analysis. This tool helps optimize solar energy planning by providing essential insights into site-specific solar resource availability.",
+                "boxb_title": "***",
+                "boxb_text": "***"
+            },
+            "premium_box": {
+                "boxa_title": "Retrieve Monthly Mean Solar Radiation & Energy Output Data (B1)",
+                "boxa_text": "Get solar radiation data and energy production estimates tailored to your solar park. Enter your latitude and longitude, along with the start and end dates, to generate a detailed visualization of Global Horizontal Irradiance (GHI) and Direct Normal Irradiance (DNI). Additionally, provide your solar park specifications—including panel tilt, azimuth, tracking type (fixed, single-axis, or dual-axis), and capacity—to receive the corresponding power production estimation. You can also download the data in CSV format for further analysis.",
+                "boxb_title": "***",
+                "boxb_text": "***"
+            }
+        },
+        "wind": {
+            "about_box": {
+                "boxa_title": "Wind resources and energy production assessment",
+                "boxa_text": "Our service provides two levels of wind data insights: Basic Assessment – Download wind speed historical data and generate directional statistics, histograms, fitted Weibull distribution and wind roses for multi-year monthly means of the processed variables (WS) in a user-defined location and time range. This tool helps users analyze wind resources. Premium Assessment – In addition to wind speed data, this service offers power production estimation based on your wind turbines/park specifications including hub height and power curve. Data Source: ERA5 hourly data on single levels.",
+                "boxb_title": "Use Case Demostration (A3)",
+                "boxb_text": "***"
+            },
+            "basic_box": {
+                "boxa_title": "Retrieve wind speed data and wind resource assessment",
+                "boxa_text": "Get wind speed historical data and generate directional statistics, histograms, fitted Weibull distribution and wind roses. Simply enter the coordinates (Latitude & Longitude) and the height of the desired location. You can also download the data in CSV format for further analysis. This tool helps users analyze wind resources by providing essential insights into site-specific wind resource availability.  ",
+                "boxb_title": "***",
+                "boxb_text": "***"
+            },
+            "premium_box": {
+                "boxa_title": "Wind Speed and Energy Resource Assessment (B1)",
+                "boxa_text": "Retrieve wind speed data and energy production estimates tailored to your wind park. Enter your lat and lon, along the start and end dates, to generate energy output data. Additionally, provide your specifications – including turbine hub height and power curve – to receive the corresponding power production estimation. If a power curve is not available the energy output data can be retrieved from a list of reference power curve models. You can also download the data in CSV format for further analysis.",
+                "boxb_title": "***",
+                "boxb_text": "***"
+            }
+        }
+    }
+}
