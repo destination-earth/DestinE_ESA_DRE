@@ -1,0 +1,153 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            margin-top: 20px;
+            background: #F0F8FF;
+        }
+        .card {
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 15px 1px rgba(52, 40, 104, .08);
+            border: 1px solid #e5e9f2;
+            border-radius: .2rem;
+            background-color: #fff;
+        }
+        .card-header {
+            border-bottom: 1px solid #e5e9f2;
+            background-color: #fff;
+            padding: .75rem 1.25rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container p-0">
+    <h1 class="h3 mb-3">Settings</h1>
+
+    <div class="row">
+        <div class="col-md-5 col-xl-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Profile Settings</h5>
+                </div>
+
+                <div class="list-group list-group-flush" role="tablist">
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#account" role="tab">Account</a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#mydata" role="tab">My Data</a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#privacy" role="tab">Privacy and Safety</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-7 col-xl-8">
+            <div class="tab-content">
+                <!-- Account Tab -->
+                <div class="tab-pane fade" id="account" role="tabpanel">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Select Plan for Assessment and Forecast</h5>
+                        </div>
+						 <div class="card-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label for="inputUsername">Username</label>
+                                            <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputUsername">Biography</label>
+                                            <textarea rows="2" class="form-control" id="inputBio" placeholder="Tell something about yourself"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="text-center">
+                                            <img alt="Test User" src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250" class="rounded-circle img-responsive mt-2" width="128" height="128">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </form>
+
+                        </div>
+						
+						
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="planSelect">Choose a Plan:</label>
+                                    <select id="planSelect" class="form-control">
+                                        <option selected>Basic Plan</option>
+                                        <option>Standard Plan</option>
+                                        <option>Premium Plan</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Selection</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- My Data Tab -->
+                <div class="tab-pane fade" id="mydata" role="tabpanel">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">My Data</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Type of Data</th>
+                                        <th>Upload Date</th>
+                                        <th>Download</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Solar</td>
+                                        <td>2025-02-20</td>
+                                        <td><button class="btn btn-sm btn-primary">Download</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Wind</td>
+                                        <td>2025-02-18</td>
+                                        <td><button class="btn btn-sm btn-primary">Download</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Solar</td>
+                                        <td>2025-02-15</td>
+                                        <td><button class="btn btn-sm btn-primary">Download</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Privacy and Safety Tab -->
+                <div class="tab-pane fade" id="privacy" role="tabpanel">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Privacy and Safety</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae tortor nec tortor commodo aliquet. Nulla facilisi. Integer dictum massa ac diam cursus, ut fringilla erat lobortis. Curabitur euismod eros in velit ultrices, at viverra lacus varius.</p>
+                            <p>Donec tincidunt, lacus ut facilisis dapibus, quam massa fermentum magna, nec feugiat orci libero id lectus. Aliquam erat volutpat. Nam sit amet venenatis justo, non condimentum eros. Duis sed fringilla mi.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- tab-content -->
+        </div> <!-- col-md-7 -->
+    </div> <!-- row -->
+</div> <!-- container -->
+
+<script type="text/javascript"></script>
+</body>
+</html>

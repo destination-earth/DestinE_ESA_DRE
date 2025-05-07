@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab Navigation</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .nav-btn {
+            width: 33.3%;
+            text-align: center;
+        }
+        .content-container, .extra-info-container {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+            background: #fff;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <div class="container mt-4">
+        <div class="d-flex">
+            <button class="btn btn-light nav-btn active" id="btn-about">About</button>
+            <button class="btn btn-light nav-btn" id="btn-basic">Basic (A1)</button>
+            <button class="btn btn-light nav-btn" id="btn-premium">Premium (B1)</button>
+        </div>
+
+        <div class="content-container mt-3">
+            <div id="content-about">
+
+                <div style="width: 100%; background-color: #f9f9f9; padding: 20px 0; font-family: Arial, sans-serif;">
+                    <div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+                        <h4 style="color: #333; text-align: left;"><strong>Solar Radiation & Power Production Assessment (A1, B1)</strong></h4>
+                        <br />
+                        <h5 style="color: #333; text-align: left;">Our Service Provides Two Levels of Solar Data Insights</h5>
+                        <ul style="list-style-type: none; padding: 0;">
+                            <li style="margin-bottom: 15px; text-align: left;">
+                                <strong style="color: #007BFF;">Basic Assessment</strong> – Visualize and download monthly average values of Global Horizontal Irradiance (GHI) and Direct Normal Irradiance (DNI) for any user-defined location and date range. This tool helps users analyze solar resource availability with no cost.
+                            </li>
+                            <li style="margin-bottom: 15px; text-align: left;">
+                                <strong style="color: #007BFF;">Premium Assessment</strong> – In addition to solar radiation data, this service offers power production estimation based on your solar park’s specifications, including panel tilt, azimuth, tracking type (fixed, single-axis, or dual-axis), and capacity.
+                            </li>
+                        </ul>
+                        <p style="font-size: 14px; color: #666; text-align: left;"><strong>Data Source:</strong> CAMS Solar Radiation Data Service.</p>
+                    </div>
+                </div>
+
+
+            </div>
+            <div id="content-basic" style="display: none;">
+                <h4>Retrieve Monthly Mean Solar Radiation Data (A1)</h4>
+                <p>Retrieve monthly mean values of Global Horizontal Irradiance (GHI) and Direct Normal Irradiance (DNI) for your location. Simply enter your latitude and longitude, along with the start and end dates, to generate a detailed visualization of solar radiation trends. You can also download the data in CSV format for further analysis. This tool helps optimize solar energy planning by providing essential insights into site-specific solar resource availability.</p>
+            </div>            
+
+
+            <div id="content-premium" style="display: none;">
+                <h4>Retrieve Monthly Mean Solar Radiation & Energy Output Data (B1)</h4>
+                <p>Get solar radiation data and energy production estimates tailored to your solar park. Enter your latitude and longitude, along with the start and end dates, to generate a detailed visualization of Global Horizontal Irradiance (GHI) and Direct Normal Irradiance (DNI). Additionally, provide your solar park specifications—including panel tilt, azimuth, tracking type (fixed, single-axis, or dual-axis), and capacity—to receive the corresponding power production estimation. You can also download the data in CSV format for further analysis.</p>
+            </div>
+
+        </div>
+
+        <!-- Extra Info Container -->
+        <div class="extra-info-container mt-4">
+            <div id="extra-about">
+
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); gap: 10px; height: 100vh; padding: 10px;">
+                    <!-- Area 1:Image-->
+
+                    <div style="border: 0px  #ccc; padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                        <img src="ass-panels.png" style="max-width: 100%; height: auto;">
+
+                    </div>
+
+
+
+                    <!-- Area 2: Use Case Description -->
+                    <div style="border: 0px  #ccc; padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; text-align: left;">
+                        <h3 style="margin: 0;">Use Case Demonstration</h3>
+                        <p style="margin: 10px 0;">Explore how ΚΥΝΗΓΟΣ AE, a subsidiary of Quest Energy AE, utilizes our solar forecasting service to optimize the performance of its stations in Greece. This demonstration showcases how our Solar Energy Assessment service can enhance decision-making and efficiency for large-scale solar parks.</p>
+                    </div>
+                    <!-- Area 3: Image 2 -->
+                    <div style="border: 0px #ccc; padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                        <img src="ass-montha.png" alt="Image 2" style="max-width: 90%; height: 80%;">
+
+                    </div>
+
+                    <!-- Area 4: Monthly GHI Data -->
+                    <div style="border: 0px #ccc; padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                        <img src="ass-monthb.png" alt="Image 2" style="max-width: 90%; height: 80%;">
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div id="extra-basic" style="display: none;">
+                <div id="extra-basic" style="display: none;">
+
+
+                    <!-- Second Box: Input Fields and Buttons -->
+                    <div class="extra-info-container mt-4" style="border: 1px solid #ddd; padding: 20px; border-radius: 10px; background: #fff;">
+                        <h5>Retrieve Solar Data</h5>
+                        <form>
+                            <!-- First Row: Start Date and End Date -->
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="start-date" class="form-label">Start Date</label>
+                                    <input type="date" class="form-control" id="start-date">
+                                </div>
+                                <div class="col">
+                                    <label for="end-date" class="form-label">End Date</label>
+                                    <input type="date" class="form-control" id="end-date">
+                                </div>
+                            </div>
+
+                            <!-- Second Row: Latitude and Longitude -->
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="latitude" class="form-label">Latitude</label>
+                                    <input type="number" class="form-control" id="latitude" placeholder="32.6">
+                                </div>
+                                <div class="col">
+                                    <label for="longitude" class="form-label">Longitude</label>
+                                    <input type="number" class="form-control" id="longitude" placeholder="Enter longitude">
+                                </div>
+                            </div>
+
+                            <!-- Buttons -->
+                            <div class="d-flex justify-content-between">
+                                <button type="button" class="btn btn-secondary">CLEAR</button>
+                                <button type="button" class="btn btn-primary">SEND</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+
+
+
+                <div id="extra-basic" style="display: none;">
+
+
+                    <!-- Second Box: Two Images Side by Side
+
+         style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; border: 1px solid #ddd; padding: 20px; border-radius: 10px; background: #fff;">
+        -->
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 20px; border: 1px solid #ddd; padding: 20px; border-radius: 10px; background: #fff;">
+                        <!-- Image 1 -->
+                        <div style="text-align: center;">
+                            <img src="ass-montha-basic.png" alt="Image 1" style="max-width: 100%; height: auto; border-radius: 10px;">
+
+                        </div>
+
+                        <!-- Image 2 -->
+                        <div style="text-align: center;">
+                            <img src="ass-monthb-basic.png" alt="Image 2" style="max-width: 100%; height: auto; border-radius: 10px;">
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+          
+
+            <div id="extra-premium" style="display: none;">
+
+
+                <div id="extra-basic">
+
+                    <!-- Second Box: Grid Layout for Inputs, Date Pickers, Dropdowns, and Buttons -->
+                    <div class="extra-info-container mt-4" style="border: 1px solid #ddd; padding: 20px; border-radius: 10px; background: #fff;">
+                        <h5>Solar Park Configuration</h5>
+                        <form>
+                            <!-- Row 1: Start Date and End Date -->
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="start-date" class="form-label">Start Date</label>
+                                    <input type="date" class="form-control datepicker" id="start-date" placeholder="MM/DD/YYYY">
+                                </div>
+                                <div class="col">
+                                    <label for="end-date" class="form-label">End Date</label>
+                                    <input type="date" class="form-control datepicker" id="end-date" placeholder="MM/DD/YYYY">
+                                </div>
+                            </div>
+
+                            <!-- Row 2: Latitude and Longitude -->
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="latitude" class="form-label">Latitude</label>
+                                    <input type="number" class="form-control" id="latitude" placeholder="Enter latitude">
+                                </div>
+                                <div class="col">
+                                    <label for="longitude" class="form-label">Longitude</label>
+                                    <input type="number" class="form-control" id="longitude" placeholder="Enter longitude">
+                                </div>
+                            </div>
+
+                            <!-- Row 3: Tilt and Azimuth -->
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="tilt" class="form-label">Tilt</label>
+                                    <input type="number" class="form-control" id="tilt" placeholder="Enter tilt value">
+                                </div>
+                                <div class="col">
+                                    <label for="azimuth" class="form-label">Azimuth</label>
+                                    <input type="number" class="form-control" id="azimuth" placeholder="Enter azimuth value">
+                                </div>
+                            </div>
+
+                            <!-- Row 4: Tracking and Capacity -->
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="tracking" class="form-label">Tracking</label>
+                                    <select class="form-select" id="tracking">
+                                        <option value="fixed">Fixed</option>
+                                        <option value="single-axis">Single-Axis</option>
+                                        <option value="dual-axis">Dual-Axis</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <label for="capacity" class="form-label">Capacity</label>
+                                    <input type="number" class="form-control" id="capacity" placeholder="Enter capacity value">
+                                </div>
+                            </div>
+
+                            <!-- Buttons -->
+                            <div class="d-flex justify-content-between mt-4">
+                                <button type="button" class="btn btn-secondary">CLEAR</button>
+                                <button type="button" class="btn btn-primary">SEND</button>
+                            </div>
+                        </form>
+                    </div>
+
+
+
+                    <div class="extra-info-container" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; border: 1px solid #ddd; padding: 20px; border-radius: 10px; background: #fff;">
+        
+ 
+                                <img src="ass-montha-premium.png" alt="Image 1" style="max-width: 100%; height: auto; border-radius: 10px;">
+ 
+                                <img src="ass-monthb-premium.png" alt="Image 2" style="max-width: 100%; height: auto; border-radius: 10px;">
+
+                        
+                       
+                    </div>
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $(".nav-btn").click(function () {
+                $(".nav-btn").removeClass("active btn-primary").addClass("btn-light");
+                $(this).addClass("active btn-primary").removeClass("btn-light");
+
+                let btnId = $(this).attr("id");
+                $(".content-container > div, .extra-info-container > div").hide();
+
+                if (btnId === "btn-about") {
+                    $("#content-about, #extra-about").show();
+                } else if (btnId === "btn-basic") {
+                    $("#content-basic, #extra-basic").show();
+                } else if (btnId === "btn-premium") {
+                    $("#content-premium, #extra-premium").show();
+                }
+            });
+        });
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

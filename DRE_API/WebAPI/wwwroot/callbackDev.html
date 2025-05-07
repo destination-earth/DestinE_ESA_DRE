@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+ 
+</head>
+<body>
+    <h3>Test KeyCloak IVV environment, temp code collected, redirecting to main application...</h3>
+    <div id="parameters"></div>
+
+    <script>
+        // Get the URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // Create a function to display parameters
+        function displayParameters() {
+            const parametersDiv = document.getElementById("parameters");
+
+            // Clear existing content
+            parametersDiv.innerHTML = "";
+
+            // Iterate over all parameters and display them
+            urlParams.forEach((value, key) => {
+                const parameterElement = document.createElement("div");
+                parameterElement.textContent = `${key}: ${value}`;
+                parametersDiv.appendChild(parameterElement);
+            });
+        }
+
+        // Call the displayParameters function when the page loads
+        window.onload = displayParameters;
+
+
+        function redirectToCustomAddress() {
+            // Get the current URL
+            const currentUrl = new URL(window.location.href);
+
+            // Extract query parameters
+            const queryParams = currentUrl.search;
+
+            // Get the redirect address from the text box
+            const redirectAddress = document.getElementById("redirectAddress").value.trim();
+
+            // Validate the address
+            if (!redirectAddress) {
+                alert("Please enter a valid address.");
+                return;
+            }
+
+            // Construct the new URL
+            const newUrl = `${redirectAddress}${queryParams}`;
+
+            // Redirect to the new URL
+            window.location.href = newUrl;
+        }
+
+    </script>
+    <label for="redirectAddress">Redirect Address:</label>
+    <input type="text" id="redirectAddress" value="http://localhost:5000/login" style="width: 300px;">
+    <button onclick="redirectToCustomAddress()">Redirect</button>
+
+</body>
+
+
+
+</html >
