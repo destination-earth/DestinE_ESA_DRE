@@ -1,0 +1,8 @@
+services:
+  polytope-api:
+    build: .
+    environment:
+      - DESP_USERNAME=ageorgakis@noa.gr
+    volumes:
+      - ./data:/app/data
+      - ./config:/app/config

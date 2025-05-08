@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  csv-validator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: dre/solar-template-validation/app-backend-api:1.0.3
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount the data directory for CSV files
+      - ./data:/app/data
