@@ -1,0 +1,49 @@
+name: destine
+channels:
+  - conda-forge
+  - defaults
+  - https://repo.anaconda.com/pkgs/main
+  - https://repo.anaconda.com/pkgs/r
+dependencies:
+  - numpy
+  - scipy
+  - _libgcc_mutex=0.1=main
+  - _openmp_mutex=5.1=1_gnu
+  - bzip2=1.0.8=h5eee18b_6
+  - ca-certificates=2025.2.25=h06a4308_0
+  - colorama=0.4.6=pyhd8ed1ab_1
+  - ld_impl_linux-64=2.40=h12ee557_0
+  - libffi=3.4.4=h6a678d5_1
+  - libgcc-ng=11.2.0=h1234567_1
+  - libgomp=11.2.0=h1234567_1
+  - libstdcxx-ng=11.2.0=h1234567_1
+  - libuuid=1.41.5=h5eee18b_0
+  - ncurses=6.4=h6a678d5_0
+  - openssl=3.0.16=h5eee18b_0
+  - pip=25.0=py310h06a4308_0
+  - python=3.10.16=he870216_1
+  - readline=8.2=h5eee18b_0
+  - setuptools=75.8.0=py310h06a4308_0
+  - sqlite=3.45.3=h5eee18b_0
+  - tk=8.6.14=h39e8969_0
+  - tqdm=4.67.1=pyhd8ed1ab_1
+  - tzdata=2025a=h04d1e81_0
+  - wheel=0.45.1=py310h06a4308_0
+  - xz=5.6.4=h5eee18b_1
+  - zlib=1.2.13=h5eee18b_1
+  - xarray
+  - eccodes  # Required for cfgrib
+  - cdo
+  - pip:
+      - certifi==2025.1.31
+      - charset-normalizer==3.4.1
+      - destinelab==1.1
+      - idna==3.10
+      - lxml==5.3.1
+      - pyjwt==2.10.1
+      - requests==2.32.3
+      - urllib3==2.3.0
+      - fastapi
+      - uvicorn
+      - cfgrib==0.9.14.0  # Library for GRIB file processing
+      - cdsapi>=0.7.4
