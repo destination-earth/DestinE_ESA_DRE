@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+pydantic
+requests
+lxml
+earthkit-data
+cfgrib
+polytope-client
