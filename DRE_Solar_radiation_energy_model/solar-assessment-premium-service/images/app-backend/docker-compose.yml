@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  redis:
+    image: redis:6-alpine
+    ports:
+      - '6379:6379'
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./output:/output
+    depends_on:
+      - redis
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+    volumes:
+      - ./output:/output
+    depends_on:
+      - redis

@@ -1,0 +1,23 @@
+FROM python:3.11-slim
+WORKDIR /app
+COPY . /app
+
+COPY celery_app.py tasks.py ./
+
+# Install cams_tools package
+COPY cams_tools/ ./cams_tools/
+RUN pip install ./cams_tools
+
+# Install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy Celery config and tasks
+COPY celery_app.py tasks.py main.py /app/
+
+# Set environment variables (if needed)
+ENV DEDL_USERNAME kpapachr@noa.gr
+ENV DEDL_PASSWORD buc4gup*dat3HVB9unu
+
+# Start Celery worker
+CMD ["celery", "-A", "celery_app", "worker", "--loglevel=info", "--include=tasks"]
