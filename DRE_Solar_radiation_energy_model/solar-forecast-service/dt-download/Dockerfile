@@ -18,8 +18,8 @@ RUN mkdir -p data config
 # Set environment variables
 ENV POLYTOPE_RCFILE=/root/.polytopeapirc
 ENV PYTHONUNBUFFERED=1- 
-ENV DESP_USERNAME=ageorgakis@noa.gr
-ENV DESP_PASSWORD=3Tg)B%Nb&u2CR,C
+ENV DESP_USERNAME=
+ENV DESP_PASSWORD=
 
 # Run the app
 ENTRYPOINT ["python", "main.py"]

@@ -11,10 +11,10 @@ services:
       - ./models:/app/models
       - ./data_pool:/app/data_pool
     environment:
-      - NOTIFICATION_URL=https://hyrefapp.dev.desp.space/api/Jobs/jobresult
-      - NOTIFICATION_TOKEN=916ab7c8-acb39e299883-f1ca-419b-816b-7cfb307e6daf883b-aa91b02090b8
-      - CAMS_USER=kpapachr@noa.gr
-      - CAMS_PASSWORD=buc4gup*dat3HVB9unu
+      - NOTIFICATION_URL=
+      - NOTIFICATION_TOKEN=
+      - CAMS_USER=
+      - CAMS_PASSWORD=
       - AOD_LOOKUP_TABLE_PATH=/app/aod_variables/eglo_surf_lut_cs_high_res_NAcorrected_alb02.Rdata
       - STATION_CLIMATE_PATH=/app/aod_variables/station_clima.csv
     restart: unless-stopped

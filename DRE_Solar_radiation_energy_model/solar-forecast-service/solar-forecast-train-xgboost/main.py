@@ -17,9 +17,9 @@ from xgboost import XGBRegressor
 import requests
 
 # Set the notification URL and token
-NOTIFICATION_URL = os.environ.get("NOTIFICATION_URL", "https://hyrefapp.dev.desp.space/api/Jobs/jobupdate")
-NOTIFICATION_TOKEN = os.environ.get("NOTIFICATION_TOKEN", "916ab7c8-acb39e299883-f1ca-419b-816b-7cfb307e6daf883b-aa91b02090b8")
-FORECAST_API_URL = os.environ.get("FORECAST_API_URL", "http://solar-forecast-inference-deployment:8000/solar-forecast")
+NOTIFICATION_URL = os.environ.get("NOTIFICATION_URL")
+NOTIFICATION_TOKEN = os.environ.get("NOTIFICATION_TOKEN")
+FORECAST_API_URL = os.environ.get("FORECAST_API_URL")
 
 app = FastAPI()
 

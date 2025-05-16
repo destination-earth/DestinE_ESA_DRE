@@ -43,14 +43,9 @@ def main():
         print(f"CAMS_FILE_PATH={output_filepath}")  # Special marker for main.py to extract
         return 0
 
-    # Authentication
-    #DEDL_USER = os.environ.get("DEDL_USER")  # Default fallback if not in env
-    #DEDL_USER = os.environ.get("DEDL_USER", "kpapachr@noa.gr")  # Default fallback if not in env
-    #DEDL_PASSWORD = os.environ.get("DEDL_PASSWORD", "buc4gup*dat3HVB9unu")
-
     #DEDL_PASSWORD = os.environ.get("DEDL_PASSWORD")
-    DEDL_USER = "kpapachr@noa.gr"
-    DEDL_PASSWORD = "buc4gup*dat3HVB9unu"
+    DEDL_USER =
+    DEDL_PASSWORD = 
     token_url = 'https://identity.data.destination-earth.eu/auth/realms/dedl/protocol/openid-connect/token'
     
     print("Authenticating...")

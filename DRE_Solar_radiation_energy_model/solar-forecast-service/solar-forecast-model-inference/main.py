@@ -33,8 +33,8 @@ CAMS_USER = os.environ.get("CAMS_USER")
 CAMS_PASSWORD = os.environ.get("CAMS_PASSWORD") 
 
 # Set the notification URL and token
-NOTIFICATION_URL = os.environ.get("NOTIFICATION_URL", "https://hyrefapp.dev.desp.space/api/Jobs/jobresult")
-NOTIFICATION_TOKEN = os.environ.get("NOTIFICATION_TOKEN", "916ab7c8-acb39e299883-f1ca-419b-816b-7cfb307e6daf883b-aa91b02090b8")
+NOTIFICATION_URL = os.environ.get("NOTIFICATION_URL")
+NOTIFICATION_TOKEN = os.environ.get("NOTIFICATION_TOKEN")
 
 app = FastAPI(title="Solar Forecast API")
 

@@ -264,17 +264,7 @@ def main():
         sys.exit(1)
     
     # Download data
-    #success = download_data(
-    #    args.date,
-    #    args.param,
-    #    args.forecast_horizon
-    #)
-    
-    # Exit with appropriate code
-    #sys.exit(0 if success else 1)
-
-    #params = set(args.param.split('/'))
-    #params.add("169")  # Ensure 169 is always downloaded
+  
     print(f"Parameters to download: {params}")
     all_success = True
     for param in params:
@@ -288,10 +278,6 @@ def main():
  
     # Exit with appropriate code
     sys.exit(0 if all_success else 1)
-
-
-
-
 
 
 
