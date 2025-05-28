@@ -1,7 +1,4 @@
 # DRE Use Case
-## _ΗYREF is the combination of solar and wind services_
+## _ΗYREF refers to the hybrid - solar and wind - module of DRE. In order to launch the hybrid module, the user needs to run both the solar and the wind modules (services) and the combination of their outputs is the HYREF output. This is due to the fact that there is no direct way to combine solar and wind energy outputs as a unique measurement. Hence, for HYREF please refer to the solar module and the wind module, available on github.
 
-Solar: https://github.com/destination-earth/DestinE_ESA_DRE/tree/add-wind-energy-model/DRE_Solar_radiation_energy_model
-
-Wind: https://github.com/destination-earth/DestinE_ESA_DRE/tree/add-wind-energy-model/DRE_Wind_energy_model
 
