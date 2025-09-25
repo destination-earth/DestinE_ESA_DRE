@@ -8,6 +8,6 @@ The folder contains all the information for the MOOC, specifically the following
 - `DRE_Completion_Badge_Quiz.docx`
 - `DRE_User Guide.pptx`
 
-📂 The file **`3_DRE_Demo_Tools&Services.pptx`** is available in the link below:  
+📂 The file **`3_DRE_Demo_Tools&Services.mp4`** is available in the link below:  
 [https://www.youtube.com/watch?v=RxqCjHpBdpA](https://www.youtube.com/watch?v=RxqCjHpBdpA)
 
