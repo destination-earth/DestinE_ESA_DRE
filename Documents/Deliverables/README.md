@@ -1,6 +1,6 @@
 # DRE Deliverables Folder Contents
 
-The folder contains all the following deliverables for the DRE in Markdown format, and the folder Word files specifically the following files in .docx:
+The folder contains all the following deliverables for the DRE in Markdown format, and the "Word files" folder contains the following files in .docx:
 
 - `DRE_Final_Report_v1.1.docx`  
 - `DRE_UseCase_D5.2_Use_Case_Descriptor-v6.1.docx`  
