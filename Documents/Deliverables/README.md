@@ -1,6 +1,6 @@
 # DRE Deliverables Folder Contents
 
-The folder contains all the deliverables for the DRE, specifically the following files:
+The folder contains all the following deliverables for the DRE in Markdown format, and the folder Word files specifically the following files in .docx:
 
 - `DRE_Final_Report_v1.1.docx`  
 - `DRE_UseCase_D5.2_Use_Case_Descriptor-v6.1.docx`  
@@ -14,5 +14,4 @@ The folder contains all the deliverables for the DRE, specifically the following
 - `DRE_User Guide_version_2_July 2025.pptx`  
 - `FAQs.docx`
 
-📂 The **MOOC Folder Contents** are described inside the folder.
 
